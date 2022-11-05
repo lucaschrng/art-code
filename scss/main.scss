@@ -7,17 +7,40 @@
 body {
     display: grid;
     grid-template-columns: 1fr min-content 1fr;
+    justify-items: center;
+    align-items: center;
     background-color: #1E1E1E;
 }
 
 button {
     color: #fff;
     background-color: transparent;
+    height: fit-content;
+    width: fit-content;
     border: none;
     cursor: pointer;
+    border: #ffffff20 2px solid;
+    border-radius: 50%;
 
     &.next {
         order: 3;
+
+        img {
+            rotate: 180deg;
+            translate: 0.4em;
+        }
+    }
+
+    img {
+        height: 5vw;
+        max-height: 80px;
+        filter: invert(1);
+        opacity: 0.2;
+        translate: -0.25vw;
+
+        &:hover {
+            opacity: 0.5;
+        }
     }
 }
 
