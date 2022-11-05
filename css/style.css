@@ -15,15 +15,15 @@
 .canvas-container .canvas {
   display: grid;
   height: 80vh;
-  width: 133.3333333333vh;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  width: 152.7272727273vh;
+  grid-template-columns: repeat(21, 1fr);
+  grid-template-rows: repeat(11, 1fr);
   justify-items: center;
   align-items: center;
 }
-@media screen and (max-width: calc(133.3333333333vh + 20vw)) {
+@media screen and (max-width: calc(152.7272727273vh + 20vw)) {
   .canvas-container .canvas {
-    height: 48vw;
+    height: 41.9047619048vw;
     width: 80vw;
   }
 }
