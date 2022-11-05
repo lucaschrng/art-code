@@ -4,84 +4,121 @@ for (let i = 0; i < 231; i++) {
     canvas.innerHTML += '<div class="tile art1"></div>';
 }
 
-let previous = document.querySelector('.previous');
-let next = document.querySelector('.next');
+// let previous = document.querySelector('.previous');
+// let next = document.querySelector('.next');
 let tiles = document.querySelectorAll('.tile');
 
-let artIndex = 0;
+let artIndex = 1;
 let maxArtIndex = 2;
 
-let primaryColor = '#419ef0';
-let secondaryColor = '#6a449c';
+let animDuration = [
+    [5000, 250, true],
+    [6000, 200, false],
+    [6000, 300, false]
+]
 
-tileReset();
+let primaryColor = [
+    '#419ef0',
+    '#FFA5AB',
+    '#218380'
+];
 
-previous.addEventListener('click', () => {
+let secondaryColor = [
+    '#6a449c',
+    '#A53860',
+    '#84732B'
+];
 
-    if (artIndex === 0) {
-        artIndex = maxArtIndex;
-    } else {
-        artIndex--;
-    }
+tileSet(0);
+
+animLoop();
+
+function animLoop() {
 
     addClass(artIndex);
     selectAnim(artIndex);
-})
 
-next.addEventListener('click', () => {
+    setTimeout(() => {
+        animLoop();
+    }, (animDuration[artIndex][0] + 10 * animDuration[artIndex][1]) * (animDuration[artIndex][2] ? 2 : 1) + 1000);
 
     if (artIndex === maxArtIndex) {
         artIndex = 0;
     } else {
         artIndex++;
     }
-    
-    addClass(artIndex);
-    selectAnim(artIndex);
-})
+}
 
-selectAnim(artIndex)
+// previous.addEventListener('click', () => {
+
+//     if (artIndex === 0) {
+//         artIndex = maxArtIndex;
+//     } else {
+//         artIndex--;
+//     }
+
+//     addClass(artIndex);
+//     selectAnim(artIndex);
+// })
+
+// next.addEventListener('click', () => {
+
+//     if (artIndex === maxArtIndex) {
+//         artIndex = 0;
+//     } else {
+//         artIndex++;
+//     }
+    
+//     addClass(artIndex);
+//     selectAnim(artIndex);
+// })
 
 function selectAnim(index) {
     
-    tileReset();
+    tileSet(index);
 
-    if (index === 0) {
-        anime({
-            targets: '.tile',
-            rotate:  ['0deg', '360deg'],
-            backgroundColor: secondaryColor,
-            easing: 'easeInOutSine',
-            direction: 'alternate',
-            loop: true,
-            duration: 10000,
-            delay: anime.stagger(500, {grid: [21, 11], from: 'center'})
-        });
-    }
+    tiles.forEach(tile => {
+        tile.style.transitionProperty = 'all';
+        setTimeout(() => {
+            tile.style.transitionProperty = 'none';
+        }, 500);
+    })
 
-    else if (index === 1) {
-        anime({
-            targets: '.tile',
-            scale:  ['1', '5', '1'],
-            backgroundColor: [primaryColor, secondaryColor, primaryColor],
-            easing: 'easeInOutSine',
-            loop: true,
-            duration: 4000,
-            delay: anime.stagger(250, {grid: [21, 11], from: 'center'})
-        });
-    }
-
-    else if (index === 2) {
-        anime({
-            targets: '.tile',
-            scale: ['1', '0.5', '1', '1', '0.5', '1', '1', '0.5', '1'],
-            backgroundColor: [primaryColor, secondaryColor, primaryColor, primaryColor, secondaryColor, primaryColor, primaryColor, secondaryColor, primaryColor],
-            easing: 'easeInOutSine',
-            loop: true,
-            duration: 6000,
-            delay: anime.stagger(300, {grid: [21, 11], from: 'center'})
-        });
-    }
+    setTimeout(() => {
+        if (index === 0) {
+            anime({
+                targets: '.tile',
+                rotate:  ['0deg', '180deg'],
+                backgroundColor: secondaryColor[0],
+                easing: 'easeInOutSine',
+                direction: 'alternate',
+                duration: animDuration[0][0],
+                delay: anime.stagger(animDuration[0][1], {grid: [21, 11], from: 'center'})
+            });
+        }
+    
+        else if (index === 1) {
+            anime({
+                targets: '.tile',
+                scale:  ['1', '5', '1', '1', '5', '1', '1', '5', '1'],
+                backgroundColor: [primaryColor[1], secondaryColor[1], primaryColor[1], primaryColor[1], secondaryColor[1], primaryColor[1], primaryColor[1], secondaryColor[1], primaryColor[1]],
+                easing: 'easeInOutSine',
+                duration: animDuration[1][0],
+                delay: anime.stagger(animDuration[1][1], {grid: [21, 11], from: 'center'})
+            });
+        }
+    
+        else if (index === 2) {
+            anime({
+                targets: '.tile',
+                scale: ['1', '0.5', '1', '1', '0.5', '1', '1', '0.5', '1'],
+                backgroundColor: [primaryColor[2], secondaryColor[2], primaryColor[2], primaryColor[2], secondaryColor[2], primaryColor[2], primaryColor[2], secondaryColor[2], primaryColor[2]],
+                easing: 'easeInOutSine',
+                duration: animDuration[2][0],
+                delay: anime.stagger(animDuration[2][1], {grid: [21, 11], from: 'center'})
+            });
+        }
+    }, 500);
 }
 
 function addClass(index) {
@@ -94,10 +131,10 @@ function addClass(index) {
     });
 }
 
-function tileReset() {
+function tileSet(index) {
 
     tiles.forEach(tile => {
+        tile.style.backgroundColor = primaryColor[index];
         tile.style.transform = 'rotate(0deg)';
-        tile.style.backgroundColor = primaryColor;
     });
 }
