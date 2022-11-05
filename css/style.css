@@ -4,13 +4,29 @@
   box-sizing: border-box;
 }
 
+body {
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  background-color: #1E1E1E;
+}
+
+button {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+button.next {
+  order: 3;
+}
+
 .canvas-container {
   height: 100vh;
-  width: 100vw;
+  width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1E1E1E;
+  overflow: hidden;
 }
 .canvas-container .canvas {
   display: grid;
@@ -27,10 +43,36 @@
     width: 80vw;
   }
 }
+@media screen and (orientation: portrait) {
+  .canvas-container .canvas {
+    min-height: 80vw;
+    min-width: 152.7272727273vw;
+    rotate: 90deg;
+  }
+}
+@media screen and (orientation: portrait) and (max-height: 172.7272727273vw) {
+  .canvas-container .canvas {
+    min-height: 41.9047619048vh;
+    min-width: 80vh;
+  }
+}
 .canvas-container .canvas .tile {
-  background-color: #737373;
-  height: 10%;
+  position: relative;
+}
+.canvas-container .canvas .tile.art1 {
+  height: 12%;
   width: 90%;
+}
+@media screen and (orientation: portrait) {
+  .canvas-container .canvas .tile.art1 {
+    rotate: -90deg;
+  }
+}
+.canvas-container .canvas .tile.art2 {
+  height: 90%;
+  width: 90%;
+  scale: 0.2;
+  border-radius: 50%;
 }
 
 /*# sourceMappingURL=style.css.map */

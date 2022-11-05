@@ -4,13 +4,30 @@
     box-sizing: border-box;
 }
 
+body {
+    display: grid;
+    grid-template-columns: 1fr min-content 1fr;
+    background-color: #1E1E1E;
+}
+
+button {
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &.next {
+        order: 3;
+    }
+}
+
 .canvas-container {
     height: 100vh;
-    width: 100vw;
+    width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1E1E1E;
+    overflow: hidden;
 
     .canvas {
         display: grid;
@@ -27,10 +44,37 @@
             width: 80vw;
         }
 
+        @media screen and (orientation: portrait) {
+            min-height: 80vw;
+            min-width: 21*80vw/11;
+            rotate: 90deg;
+        }
+
+        @media screen 
+        and (orientation: portrait)
+        and (max-height: calc(80vw*21/11 + 20vw)) {
+            min-height: 11*80vh/21;
+            min-width: 80vh;
+        }
+
         .tile {
-            background-color: #737373;
-            height: 10%;
-            width: 90%;
+            position: relative;
+
+            &.art1 {
+                height: 12%;
+                width: 90%;
+    
+                @media screen and (orientation: portrait) {
+                    rotate: -90deg;
+                }
+            }
+
+            &.art2 {
+                height: 90%;
+                width: 90%;
+                scale: 0.2;
+                border-radius: 50%;
+            }
         }
     }
 }
