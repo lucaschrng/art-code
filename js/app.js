@@ -1,3 +1,9 @@
+let canvas = document.querySelector('.canvas');
+
+for (let i = 0; i < 231; i++) {
+    canvas.innerHTML += '<div class="tile art1"></div>';
+}
+
 let previous = document.querySelector('.previous');
 let next = document.querySelector('.next');
 let tiles = document.querySelectorAll('.tile');
