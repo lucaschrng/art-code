@@ -74,5 +74,9 @@ button.next {
   scale: 0.2;
   border-radius: 50%;
 }
+.canvas-container .canvas .tile.art3 {
+  height: 80%;
+  width: 80%;
+}
 
 /*# sourceMappingURL=style.css.map */

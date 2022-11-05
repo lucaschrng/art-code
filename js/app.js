@@ -9,7 +9,7 @@ let next = document.querySelector('.next');
 let tiles = document.querySelectorAll('.tile');
 
 let artIndex = 0;
-let maxArtIndex = 1;
+let maxArtIndex = 2;
 
 let primaryColor = '#419ef0';
 let secondaryColor = '#6a449c';
@@ -68,6 +68,18 @@ function selectAnim(index) {
             loop: true,
             duration: 4000,
             delay: anime.stagger(250, {grid: [21, 11], from: 'center'})
+        });
+    }
+
+    else if (index === 2) {
+        anime({
+            targets: '.tile',
+            scale: ['1', '0.5', '1', '1', '0.5', '1'],
+            backgroundColor: [primaryColor, secondaryColor, primaryColor, secondaryColor, primaryColor],
+            easing: 'easeInOutSine',
+            loop: true,
+            duration: 4000,
+            delay: anime.stagger(400, {grid: [21, 11], from: 'center'})
         });
     }
 }
