@@ -74,12 +74,12 @@ function selectAnim(index) {
     else if (index === 2) {
         anime({
             targets: '.tile',
-            scale: ['1', '0.5', '1', '1', '0.5', '1'],
-            backgroundColor: [primaryColor, secondaryColor, primaryColor, secondaryColor, primaryColor],
+            scale: ['1', '0.5', '1', '1', '0.5', '1', '1', '0.5', '1'],
+            backgroundColor: [primaryColor, secondaryColor, primaryColor, primaryColor, secondaryColor, primaryColor, primaryColor, secondaryColor, primaryColor],
             easing: 'easeInOutSine',
             loop: true,
-            duration: 4000,
-            delay: anime.stagger(400, {grid: [21, 11], from: 'center'})
+            duration: 6000,
+            delay: anime.stagger(300, {grid: [21, 11], from: 'center'})
         });
     }
 }
