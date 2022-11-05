@@ -3,3 +3,34 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.canvas-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1E1E1E;
+
+    .canvas {
+        display: grid;
+        height: 80vh;
+        width: 10*80vh/6;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        justify-items: center;
+        align-items: center;
+
+
+        @media screen and (max-width: calc(10*80vh/6 + 20vw)) {
+            height: 6*80vw/10;
+            width: 80vw;
+        }
+
+        .tile {
+            background-color: #737373;
+            height: 10%;
+            width: 90%;
+        }
+    }
+}
