@@ -1,3 +1,5 @@
+$tileMaxDim: 90;
+
 * {
     margin: 0;
     padding: 0;
@@ -5,43 +7,7 @@
 }
 
 body {
-    // display: grid;
-    // grid-template-columns: 1fr min-content 1fr;
-    // justify-items: center;
-    align-items: center;
     background-color: #1E1E1E;
-}
-
-button {
-    color: #fff;
-    background-color: transparent;
-    height: fit-content;
-    width: fit-content;
-    border: none;
-    cursor: pointer;
-    border: #ffffff20 2px solid;
-    border-radius: 50%;
-
-    &.next {
-        order: 3;
-
-        img {
-            rotate: 180deg;
-            translate: 0.4em;
-        }
-    }
-
-    img {
-        height: 5vw;
-        max-height: 80px;
-        filter: invert(1);
-        opacity: 0.2;
-        translate: -0.25vw;
-
-        &:hover {
-            opacity: 0.5;
-        }
-    }
 }
 
 .canvas-container {
@@ -54,30 +20,30 @@ button {
 
     .canvas {
         display: grid;
-        height: 80vh;
-        width: 21*80vh/11;
+        height: $tileMaxDim*1vh;
+        width: 21*$tileMaxDim*1vh/11;
         grid-template-columns: repeat(21, 1fr);
         grid-template-rows: repeat(11, 1fr);
         justify-items: center;
         align-items: center;
 
 
-        @media screen and (max-width: calc(21*80vh/11 + 20vw)) {
-            height: 11*80vw/21;
-            width: 80vw;
+        @media screen and (max-width: calc(21*$tileMaxDim*1vh/11 + 100vh - $tileMaxDim*1vh)) {
+            height: 11*$tileMaxDim*1vw/21;
+            width: $tileMaxDim*1vw;
         }
 
         @media screen and (orientation: portrait) {
-            min-height: 80vw;
-            min-width: 21*80vw/11;
+            min-height: $tileMaxDim*1vw;
+            min-width: 21*$tileMaxDim*1vw/11;
             rotate: 90deg;
         }
 
         @media screen 
         and (orientation: portrait)
-        and (max-height: calc(80vw*21/11 + 20vw)) {
-            min-height: 11*80vh/21;
-            min-width: 80vh;
+        and (max-height: calc($tileMaxDim*1vw*21/11 + 100vh - $tileMaxDim*1vh)) {
+            min-height: 11*$tileMaxDim*1vh/21;
+            min-width: $tileMaxDim*1vh;
         }
 
         .tile {
@@ -107,7 +73,7 @@ button {
                 height: 80%;
                 width: 80%;
                 transform: rotate(0);
-                border-radius: 10%;
+                border-radius: 5%;
             }
         }
     }

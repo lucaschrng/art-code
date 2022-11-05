@@ -4,16 +4,14 @@ for (let i = 0; i < 231; i++) {
     canvas.innerHTML += '<div class="tile art1"></div>';
 }
 
-// let previous = document.querySelector('.previous');
-// let next = document.querySelector('.next');
 let tiles = document.querySelectorAll('.tile');
 
-let artIndex = 1;
+let artIndex = 0;
 let maxArtIndex = 2;
 
 let animDuration = [
-    [5000, 250, true],
-    [6000, 200, false],
+    [2500, 200, true],
+    [8000, 200, false],
     [6000, 300, false]
 ]
 
@@ -48,30 +46,6 @@ function animLoop() {
         artIndex++;
     }
 }
-
-// previous.addEventListener('click', () => {
-
-//     if (artIndex === 0) {
-//         artIndex = maxArtIndex;
-//     } else {
-//         artIndex--;
-//     }
-
-//     addClass(artIndex);
-//     selectAnim(artIndex);
-// })
-
-// next.addEventListener('click', () => {
-
-//     if (artIndex === maxArtIndex) {
-//         artIndex = 0;
-//     } else {
-//         artIndex++;
-//     }
-    
-//     addClass(artIndex);
-//     selectAnim(artIndex);
-// })
 
 function selectAnim(index) {
     
