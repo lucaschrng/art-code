@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000;
+}
+
+.canvas-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.canvas-container .canvas {
+  display: grid;
+  height: 90vh;
+  width: 171.8181818182vh;
+  grid-template-columns: repeat(21, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+@media screen and (max-width: 181.8181818182vh) {
+  .canvas-container .canvas {
+    height: 47.1428571429vw;
+    width: 90vw;
+  }
+}
+@media screen and (orientation: portrait) {
+  .canvas-container .canvas {
+    min-height: 90vw;
+    min-width: 171.8181818182vw;
+    rotate: 90deg;
+  }
+}
+@media screen and (orientation: portrait) and (max-height: calc(171.8181818182vw + 100vh - 90vh)) {
+  .canvas-container .canvas {
+    min-height: 47.1428571429vh;
+    min-width: 90vh;
+  }
+}
+.canvas-container .canvas .tile {
+  position: relative;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-property: none;
+}
+@media screen and (orientation: portrait) {
+  .canvas-container .canvas .tile {
+    rotate: -90deg;
+  }
+}
+.canvas-container .canvas .tile.art1 {
+  height: 12%;
+  width: 90%;
+  transform: rotate(0);
+}
+.canvas-container .canvas .tile.art2 {
+  height: 18%;
+  width: 18%;
+  transform: rotate(0);
+  border-radius: 50%;
+}
+.canvas-container .canvas .tile.art3 {
+  height: 80%;
+  width: 80%;
+  transform: rotate(0);
+  border-radius: 5%;
+}
+
+/*# sourceMappingURL=main.css.map */

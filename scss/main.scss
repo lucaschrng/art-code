@@ -52,14 +52,14 @@ body {
             transition-timing-function: ease;
             transition-property: none;
 
+            @media screen and (orientation: portrait) {
+                rotate: -90deg;
+            }
+
             &.art1 {
                 height: 12%;
                 width: 90%;
                 transform: rotate(0);
-    
-                @media screen and (orientation: portrait) {
-                    rotate: -90deg;
-                }
             }
 
             &.art2 {
